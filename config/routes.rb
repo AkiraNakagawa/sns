@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :post
+  resources :posts
   post 'post/like', to: 'posts#like'
 
   get 'sessions/new'
