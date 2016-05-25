@@ -30,7 +30,7 @@ $(document).ready( function()  {
        }
 
       $.ajax("/post/like",  {
-                method: "POST",
+                method: "GET",
                 data: { id: $(this).data('post-id'), likeable: $(target).data("likeable") },
                 success: function() {
 
