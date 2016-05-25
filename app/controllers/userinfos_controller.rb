@@ -8,6 +8,13 @@ class UserinfosController < ApplicationController
   # GET /userinfos.json
   def index
     @userinfos = Userinfo.all
+    #@userinfos = Userinfo.joins(:active_relationships)
+    #  followed = " * from relationships where follower_id=3"
+    #  @userinfos = Userinfo.select("u.*, count(distinct r.followed_id) AS u")   \
+    #  .joins("left join  (#{followed}) AS r ON  u.id = r.followed_id  ")  \
+    #  .group("u.id")
+    #   @userinfos = Userinfo.select(followed)
+#    @userinfos = Userinfo.all
   end
 
 # show detail about one user
@@ -112,4 +119,9 @@ end
     def userinfo_params
       params.permit(:firstname, :lastname, :school, :email, :password)
     end
+  
+    def current_user
+      Userinfo.find_by(email: session[:user_id])
+    end
+
 end

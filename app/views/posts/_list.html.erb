@@ -1,11 +1,14 @@
 
 
 <% @posts.each do |post| %>
-  <i>Post by <%= post.userinfo.firstname + post.userinfo.lastname %></i> on <%= post.created_at %> <br>
+<!--  <i>Post by <%= post.userinfo.firstname + post.userinfo.lastname %></i> on <%= post.created_at %> <br>   -->
+
+  <i>Post by <%= post.userinfo.firstname%> </i> <i> <%post.userinfo.lastname %></i> on <%= post.created_at %> <br>
+
   <br><%= post.content %>
 
 <td>
-<br><br><a class='likelink' data-post-id=<%= post.id %> href="#">Like this post</a>
+<br><br><a class='likelink' data-likeable=1 data-post-id=<%= post.id %> href="#">Like this post</a>
 
 
   <hr>
@@ -14,13 +17,29 @@
 <script>
 $(document).ready( function()  {
   $(".likelink").click( function(event) {
-       console.debug(this)
+       console.debug("X1",this)
+       var target = this
+
+       function make_unlike_link(target) {
+           $(target).text("Unlike this post")
+           $(target).data("likeable",0)
+       }
+       function make_like_link(target) {
+           $(target).text("Like this post")
+           $(target).data("likeable",1)
+       }
 
       $.ajax("/post/like",  {
                 method: "POST",
-                data: { id: $(this).data('post-id') },
+                data: { id: $(this).data('post-id'), likeable: $(target).data("likeable") },
                 success: function() {
-                   $(this).text("Unlike")
+
+                if ($(target).data('likeable')==1) {
+                  make_unlike_link(target)
+                } else {
+                  make_like_link(target)
+                }
+
                   } 
                 }
               )

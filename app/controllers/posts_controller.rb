@@ -23,8 +23,14 @@ class PostsController < ApplicationController
   end
 
   def like
-    print @post
-    @post.like(current_user)
+    likeable = params[:likeable]
+    print "===================== LIKEABLE" + likeable
+    if likeable == "1"
+      @post.like(current_user)
+    else 
+      @post.unlike(current_user)
+    end
+
    # respond_to do |format|
    #   format.html { redirect_to @post }
    #   format.js

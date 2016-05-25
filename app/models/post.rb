@@ -7,8 +7,17 @@ class Post < ActiveRecord::Base
   def like(user)
 
     # need a check to make sure the like doesn't already exists
-
-    likes.create(user_id: user.id)
+    if ! likes.exists(user_id: user.id)
+    	likes.create(user_id: user.id)
+ 	end
   end
+
+
+  def unlike(user)
+
+  	likes.find_by(user_id: user.id).destroy
+
+  end
+
 
 end

@@ -22,6 +22,10 @@ class Userinfo < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  def feed()
+    Post.where("userinfo_id IN (?) OR userinfo_id = ?", following_ids, id)
+  end
+
   def like_post(post)
 
     # need a check to make sure the like doesn't already exists

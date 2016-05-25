@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
   def home
 
-     @posts = Post.all
-
+     #@posts = Post.all
+     #if the user is logged on
+     if current_user
+       @posts = current_user.feed()
+     end
   end
 
   def login
@@ -19,4 +22,9 @@ class PagesController < ApplicationController
 
   def find
   end
+
+  def current_user
+      Userinfo.find_by(email: session[:user_id])
+  end
+
 end
