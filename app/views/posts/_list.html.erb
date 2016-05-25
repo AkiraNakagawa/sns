@@ -1,0 +1,64 @@
+
+
+<% @posts.each do |post| %>
+  <i>Post by <%= post.userinfo.firstname + post.userinfo.lastname %></i> on <%= post.created_at %> <br>
+  <br><%= post.content %>
+
+<td>
+<br><br><a class='likelink' data-post-id=<%= post.id %> href="#">Like this post</a>
+
+
+  <hr>
+<% end %>
+
+<script>
+$(document).ready( function()  {
+  $(".likelink").click( function(event) {
+       console.debug(this)
+
+      $.ajax("/post/like",  {
+                method: "POST",
+                data: { id: $(this).data('post-id') },
+                success: function() {
+                   $(this).text("Unlike")
+                  } 
+                }
+              )
+      event.preventDefault()
+    } )
+  }
+)
+
+
+
+</script>
+
+
+
+
+<!--
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Userinfo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.content %></td>
+        <td><%= post.userinfo %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+-->
+

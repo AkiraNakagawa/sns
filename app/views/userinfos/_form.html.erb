@@ -1,0 +1,39 @@
+<%= form_for(@userinfo) do |f| %>
+  <% if @userinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@userinfo.errors.count, "error") %> prohibited this userinfo from being saved:</h2>
+
+      <ul>
+      <% @userinfo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <input name="_method" type="hidden" value="patch" />
+
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br>
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

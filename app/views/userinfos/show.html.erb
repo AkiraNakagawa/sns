@@ -1,0 +1,28 @@
+<br>
+<h2>User Information</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Name: </td>
+      <td><%= @userinfo.firstname %>  <%= @userinfo.lastname %></td>
+    </tr>
+    <tr>
+      <td>School: </td>
+      <td><%= @userinfo.school %></td>
+    </tr>
+    <tr>
+      <td>Email Address: </td>
+      <td><%= @userinfo.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+<%= render "posts/list" %>
+
+
+
+<%= link_to 'Edit', edit_userinfo_path(@userinfo) %> |
+<%= link_to 'Back', userinfos_path %>
+<p id="notice"><%= notice %></p>

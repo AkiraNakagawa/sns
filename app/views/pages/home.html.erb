@@ -1,0 +1,41 @@
+
+<% if current_user %>
+  <h1> Hello  <%= current_user.firstname + " " + current_user.lastname  %> ! </h1>
+
+  <h2>Newsfeed</h2>
+  <%= render "posts/list" %>
+
+
+<% else %>
+
+<div class="container">
+	<h1>COMP 405 Final Project Akira Nakagawa</h1>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="jumpstron">
+				<a href="pages/signup"><h2>Sign-up</h2></a>
+			</div>
+			<h4>If you are not a member yet, please click above "Sign-up" and register for the membership.</h4>
+			<h4>You have to be a college/university student in order to be a member.</h4>
+			<h4>Thank you for understanding.</h4>
+		</div>
+		<div class="col-sm-6">
+			<div class="jumpstron">
+				<a href="pages/login"><h2>Login</h2></a>
+				<h4>If you are already a memeber, you can login by clicking "Login" above.</h4>
+				<h4>Enjoy! Connect with others!!!!!</h4>
+			</div>
+		</div>
+	</div>
+
+<% end %>
+
+	<br>
+	<br>
+	<br>
+<footer>
+	<p>Copyright &copy; 2016 by Akira Nakagawa</p>
+</footer>
+</div>
+
+

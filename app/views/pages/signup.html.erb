@@ -1,0 +1,34 @@
+
+	<div class="container">
+		<h2>Sign-up Page</h2>
+		<h4>Please give us necessary information about you in order to create an account. You need to provide us about your first name, last name, school, email address and choose your password.</h4>
+		<br>
+
+		<form role="form" method="post" action="/userinfos">
+	    	<div class="form-group">
+	      		<label for="firstname">First Name:</label>
+	      		<input type="firstname" class="form-control" name="firstname" id="firstname" placeholder="Enter first name" required="true">
+	    	</div>
+	    	<div class="form-group">
+	      		<label for="lastname">Last Name:</label>
+	      		<input type="lastname" class="form-control" name="lastname" id="lastname" placeholder="Enter your last name" required="true">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="school">School:</label>
+	    		<input type="school" class="form-control" name="school" id="school" placeholder="Enter your School" required="true">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="email">Email Address:</label>
+	    		<input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email Address" required="true">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="password">Password:</label>
+	    		<input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
+	    	</div>
+
+	    	<input name="signup" type="submit" id="signup" value="Sign up" class="btn btn-default" onclick="signup()" />
+
+  		</form>
+
+	</div>
+
